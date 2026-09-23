@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Mi Dashboard</h1>
+        <button id="theme-btn" aria-label="Alternar modo oscuro">Modo Oscuro</button>
+    </header>
+
+    <main>
+        <!-- 1. Tarjeta de Perfil Editable con Nuevo Avatar Dinámico -->
+        <section class="tarjeta perfil">
+            <div class="avatar-container" id="avatar-container">
+                <!-- El texto de la inicial se ocultará automáticamente por CSS si hay foto de fondo -->
+                <span id="avatar-text" class="avatar-text">D</span>
+                <label for="avatar-input" class="avatar-edit-overlay" title="Cambiar imagen">📷</label>
+                <input type="file" id="avatar-input" accept="image/*" style="display: none;">
+            </div>
+            <div class="perfil-info">
+                <div class="perfil-header-edit">
+                    <h2 id="perfil-name">Desarrollador Experto</h2>
+                    <button id="edit-profile-btn" class="icon-btn" title="Editar Perfil">✏️</button>
+                </div>
+                <p id="perfil-desc">Construyendo el futuro de la web, un componente a la vez.</p>
+                
+                <!-- Formulario Oculto de Edición de Perfil -->
+                <div id="profile-edit-form" style="display: none;">
+                    <input type="text" id="edit-name-input" placeholder="Tu Nombre">
+                    <input type="text" id="edit-desc-input" placeholder="Tu Descripción">
+                    <div class="form-actions">
+                        <button id="save-profile-btn">Guardar</button>
+                        <button id="cancel-profile-btn" class="cancel-btn">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Reloj en Vivo -->
+        <section class="tarjeta">
+            <h2>Tiempo Real</h2>
+            <p>Hora actual: <span id="clock">00:00:00 AM</span></p>
+        </section>
+
+        <!-- 3. Lista de Tareas con Métricas y Filtros -->
+        <section class="tarjeta">
+            <h2>Mis tareas</h2>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="task-progress" style="width: 0%"></div>
+                <span id="progress-text">0% completado</span>
+            </div>
+
+            <form id="task-form">
+                <input type="text" id="task-input" placeholder="Nueva tarea..." required maxlength="100">
+                <button type="submit">Agregar</button>
+            </form>
+            
+            <div class="task-filters">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="pending">Pendientes</button>
+                <button class="filter-btn" data-filter="completed">Completadas</button>
+            </div>
+
+            <ul id="task-list">
+                <!-- Dinámico -->
+            </ul>
+
+            <div class="list-actions" id="list-actions" style="display: none;">
+                <button id="clear-completed-btn" class="clear-btn">Limpiar Completadas</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
